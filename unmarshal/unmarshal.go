@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"sql2struct/table"
 	"strings"
 	"time"
 
-	"github.com/dailyyoga/sql-to-xorm-struct/table"
 	"github.com/goroom/logger"
 )
 
@@ -46,7 +46,7 @@ func UnmarshalFile(sqlFilePath string, packageName string) error {
 
 		if strings.HasPrefix(line, "CREATE TABLE") {
 			line = line[len("CREATE TABLE `"):]
-			t.TableName = line[:(len(line) - len("`(\n") - 1)]
+			t.TableName = line[:(len(line) - len("`(\n") - 2)]
 			t.StructName = t.UnderlineToHump(t.TableName)
 			continue
 		}

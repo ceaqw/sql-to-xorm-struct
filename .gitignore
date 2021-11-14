@@ -2,3 +2,4 @@ sql-to-xorm-struct
 databases
 *.log
 .DS_Store
+go.sum
